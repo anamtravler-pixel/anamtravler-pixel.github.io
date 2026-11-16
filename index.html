@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nam Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+@property --n{syntax:'<integer>';inherits:false;initial-value:0}
+body{margin:0;background:#FFFFFF;color:#0B0B0C;font-family:'Manrope',system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:2px solid #0B0B0C;outline-offset:3px}
+img,video{display:block;max-width:100%}
+
+/* load-in */
+@keyframes up{from{transform:translateY(110%)}to{transform:none}}
+@keyframes fadein{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.line{display:block;overflow:hidden;padding-bottom:0.1em}
+.line>span{display:inline-block;animation:up 1s cubic-bezier(.2,.7,.2,1) both}
+.fi{animation:fadein 1s ease both}
+
+/* ambient */
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.14) translate(-1.5%,1%)}}
+.kb{animation:kb 24s ease-in-out infinite alternate}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.rail{display:flex;width:max-content;animation:marquee 60s linear infinite}
+.rail:hover{animation-play-state:paused}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.pulse{animation:pulse 2.2s ease-in-out infinite}
+
+/* buttons and cards */
+.pill{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:999px;font-weight:700;font-size:15px;transition:transform .4s cubic-bezier(.2,.7,.2,1),background .3s,color .3s}
+.pill:hover{transform:translateY(-3px)}
+.pill.light{background:#fff;color:#0B0B0C}
+.pill.light:hover{background:#0B0B0C;color:#fff}
+.pill.dark{background:#0B0B0C;color:#fff}
+.pill.dark:hover{background:#2A2C31}
+.pill.ghost{border:1.5px solid #fff;color:#fff}
+.pill.ghost:hover{background:#fff;color:#0B0B0C}
+.card{transition:transform .5s cubic-bezier(.2,.7,.2,1),background .4s,color .4s}
+.card:hover{transform:translateY(-8px);background:#0B0B0C;color:#fff}
+.card:hover .sub{color:#B8BBC2}
+.card .go{display:inline-block;transition:transform .4s}
+.card:hover .go{transform:translate(6px,-6px)}
+.tile img{transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.tile:hover img{transform:scale(1.05)}
+.tile .cap{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.tile:hover .cap{transform:translateX(8px)}
+.tile .go{display:inline-block;transition:transform .4s}
+.tile:hover .go{transform:translate(5px,-5px)}
+
+/* counters */
+.num{counter-reset:n var(--n)}
+.num::after{content:counter(n)}
+.c2{--n:2}.c5{--n:5}.c8{--n:8}
+@keyframes cnt2{from{--n:0}to{--n:2}}
+@keyframes cnt5{from{--n:0}to{--n:5}}
+@keyframes cnt8{from{--n:0}to{--n:8}}
+.c2{animation:cnt2 1.6s ease-out both}
+.c5{animation:cnt5 1.6s ease-out both}
+.c8{animation:cnt8 1.6s ease-out both}
+
+/* scroll driven */
+@keyframes rise{from{opacity:0;transform:translateY(56px)}to{opacity:1;transform:none}}
+@keyframes drift{from{transform:translateY(70px)}to{transform:translateY(-70px)}}
+@keyframes progress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.bar{position:fixed;left:0;top:0;height:3px;width:100%;background:#0B0B0C;transform:scaleX(0);transform-origin:left;z-index:20}
+@supports (animation-timeline: view()){
+.rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+.drift{animation:drift linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+.c2,.c5,.c8{animation-timeline:view();animation-range:entry 10% cover 35%;animation-timing-function:linear}
+.bar{animation:progress linear both;animation-timeline:scroll(root)}
+}
+@media (prefers-reduced-motion:reduce){
+.kb,.rail,.pulse,.line>span,.fi,.rv,.drift,.bar,.c2,.c5,.c8{animation:none!important}
+.pill,.card,.tile img,.tile .cap{transition:none}
+}
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+<div style="width:100%;max-width:1440px;margin:0 auto;background:#fff;overflow:hidden;position:relative">
+<div class="bar" aria-hidden="true"></div>
+
+<!-- NAV: floating capsule -->
+<div style="position:sticky;top:0;z-index:10;height:0">
+<div style="position:absolute;top:18px;left:clamp(12px,3vw,40px);right:clamp(12px,3vw,40px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,0.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:12px 12px 12px 26px;border-radius:999px;box-shadow:0 8px 30px rgba(0,0,0,0.12)">
+<a href="#top" style="font-weight:800;font-size:20px;letter-spacing:-0.02em">NAM<span style="color:#2FD0BE">.</span></a>
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 28px;font-weight:700;font-size:14px">
+<a href="#services">Services</a>
+<a href="#work">Work</a>
+<a href="#process">Process</a>
+<a href="#contact" class="pill dark" style="padding:12px 22px;font-size:14px"><span class="pulse" style="width:8px;height:8px;border-radius:50%;background:#2FD0BE"></span>Let's talk</a>
+</div>
+</div>
+</div>
+
+<!-- HERO -->
+<div id="top" style="position:relative;min-height:800px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#0A0B0D">
+<img class="kb" src="assets/circle-cover.webp" alt="The Circle, a science fiction motion visual concept by Nam" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+<div style="position:absolute;inset:0;background:rgba(10,11,13,0.45)"></div>
+<div style="position:relative;box-sizing:border-box;width:100%;padding:150px clamp(16px,4vw,48px) 110px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:36px;color:#fff">
+<h1 style="margin:0;font-weight:800;font-size:clamp(44px,9vw,136px);line-height:0.98;letter-spacing:-0.045em">
+<span class="line"><span style="animation-delay:.1s">Design that</span></span>
+<span class="line"><span style="animation-delay:.28s">moves.</span></span>
+</h1>
+<p class="fi" style="margin:0;max-width:560px;font-size:clamp(16px,1.5vw,20px);line-height:1.55;color:#E3E5E9;animation-delay:.8s">Nam is a freelance creative designer in Indonesia making 3D motion, graphics, illustration, animation and concept art with a point of view.</p>
+<div class="fi" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;animation-delay:1s">
+<a class="pill light" href="#work">See the work <span>→</span></a>
+<a class="pill ghost" href="#contact">Get in touch</a>
+</div>
+<div class="fi" style="font-size:13px;color:#C4C7CE;animation-delay:1.2s">Open for freelance projects</div>
+</div>
+</div>
+
+<!-- RAIL -->
+<div style="padding:56px 0 24px;overflow:hidden">
+<div class="rail">
+<div style="display:flex;gap:20px;padding-right:20px">
+<img src="assets/ufa-jar.webp" alt="Skincare jar render" style="height:340px;width:auto;border-radius:24px">
+<img src="assets/ig-bali.webp" alt="Bali Heritage story" style="height:340px;width:auto;border-radius:24px">
+<img src="assets/vase.webp" alt="Vase and moth render" style="height:340px;width:auto;border-radius:24px">
+<img src="assets/kode.webp" alt="KODE Landscape logo" style="height:340px;width:auto;border-radius:24px">
+<img src="assets/crash-scene.webp" alt="Crash site render" style="height:340px;width:auto;border-radius:24px">
+<img src="assets/ig-tuksedo.webp" alt="Tuksedo story" style="height:340px;width:auto;border-radius:24px">
+<img src="assets/creature.webp" alt="Creature study" style="height:340px;width:auto;border-radius:24px">
+<img src="assets/photo-house.webp" alt="Black and white street photo" style="height:340px;width:auto;border-radius:24px">
+</div>
+<div style="display:flex;gap:20px;padding-right:20px" aria-hidden="true">
+<img src="assets/ufa-jar.webp" alt="" style="height:340px;width:auto;border-radius:24px">
+<img src="assets/ig-bali.webp" alt="" style="height:340px;width:auto;border-radius:24px">
+<img src="assets/vase.webp" alt="" style="height:340px;width:auto;border-radius:24px">
+<img src="assets/kode.webp" alt="" style="height:340px;width:auto;border-radius:24px">
+<img src="assets/crash-scene.webp" alt="" style="height:340px;width:auto;border-radius:24px">
+<img src="assets/ig-tuksedo.webp" alt="" style="height:340px;width:auto;border-radius:24px">
+<img src="assets/creature.webp" alt="" style="height:340px;width:auto;border-radius:24px">
+<img src="assets/photo-house.webp" alt="" style="height:340px;width:auto;border-radius:24px">
+</div>
+</div>
+</div>
+
+<!-- STATS -->
+<div style="padding:96px clamp(16px,4vw,48px);display:flex;flex-direction:column;align-items:center;gap:56px;text-align:center">
+<h2 class="rv" style="margin:0;max-width:760px;font-weight:800;font-size:clamp(28px,3.6vw,52px);line-height:1.1;letter-spacing:-0.035em">One designer, five disciplines, a lot of ways to show an idea.</h2>
+<div style="display:flex;flex-wrap:wrap;gap:40px 96px;justify-content:center">
+<div class="rv" style="display:flex;flex-direction:column;gap:8px;min-width:0"><div style="font-weight:800;font-size:clamp(64px,9vw,128px);line-height:1;letter-spacing:-0.05em"><span class="num c2"></span>+</div><div style="font-size:16px;color:#5E6168">years of experience</div></div>
+<div class="rv" style="display:flex;flex-direction:column;gap:8px;min-width:0"><div style="font-weight:800;font-size:clamp(64px,9vw,128px);line-height:1;letter-spacing:-0.05em"><span class="num c5"></span></div><div style="font-size:16px;color:#5E6168">creative disciplines</div></div>
+<div class="rv" style="display:flex;flex-direction:column;gap:8px;min-width:0"><div style="font-weight:800;font-size:clamp(64px,9vw,128px);line-height:1;letter-spacing:-0.05em"><span class="num c8"></span></div><div style="font-size:16px;color:#5E6168">project categories</div></div>
+</div>
+</div>
+
+<!-- SERVICES -->
+<div id="services" style="padding:40px clamp(16px,4vw,48px) 120px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:12px;max-width:640px">
+<h2 style="margin:0;font-weight:800;font-size:clamp(32px,4.4vw,64px);line-height:1.02;letter-spacing:-0.04em">What I make</h2>
+<p style="margin:0;font-size:18px;line-height:1.55;color:#5E6168">From a single frame to a full identity. Pick a discipline or mix a few.</p>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:20px">
+<a href="#work" class="card rv" style="flex:1 1 340px;min-width:0;box-sizing:border-box;background:#F3F3F1;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:14px;min-height:260px;justify-content:space-between">
+<div style="display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-weight:800;font-size:26px;letter-spacing:-0.025em">3D motion</h3><p class="sub" style="margin:0;font-size:15px;line-height:1.55;color:#5E6168">Rendered scenes and animated sequences built in Blender.</p></div>
+<div style="display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:700"><span>Great for: product launches, brand moments</span><span class="go">↗</span></div>
+</a>
+<a href="#identity" class="card rv" style="flex:1 1 340px;min-width:0;box-sizing:border-box;background:#F3F3F1;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:14px;min-height:260px;justify-content:space-between">
+<div style="display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-weight:800;font-size:26px;letter-spacing:-0.025em">Brand &amp; logo</h3><p class="sub" style="margin:0;font-size:15px;line-height:1.55;color:#5E6168">Logos, guidelines and logo animation that hold together.</p></div>
+<div style="display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:700"><span>Great for: new brands, apparel labels</span><span class="go">↗</span></div>
+</a>
+<a href="#graphic" class="card rv" style="flex:1 1 340px;min-width:0;box-sizing:border-box;background:#F3F3F1;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:14px;min-height:260px;justify-content:space-between">
+<div style="display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-weight:800;font-size:26px;letter-spacing:-0.025em">Graphic design</h3><p class="sub" style="margin:0;font-size:15px;line-height:1.55;color:#5E6168">Social posts, event posters and apparel mockups with a clear idea.</p></div>
+<div style="display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:700"><span>Great for: events, campaigns</span><span class="go">↗</span></div>
+</a>
+<a href="#work" class="card rv" style="flex:1 1 340px;min-width:0;box-sizing:border-box;background:#F3F3F1;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:14px;min-height:260px;justify-content:space-between">
+<div style="display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-weight:800;font-size:26px;letter-spacing:-0.025em">Illustration &amp; concept art</h3><p class="sub" style="margin:0;font-size:15px;line-height:1.55;color:#5E6168">Worlds, creatures and forms drawn and sculpted from scratch.</p></div>
+<div style="display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:700"><span>Great for: games, film, editorial</span><span class="go">↗</span></div>
+</a>
+<a href="#photo" class="card rv" style="flex:1 1 340px;min-width:0;box-sizing:border-box;background:#F3F3F1;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:14px;min-height:260px;justify-content:space-between">
+<div style="display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-weight:800;font-size:26px;letter-spacing:-0.025em">Photography</h3><p class="sub" style="margin:0;font-size:15px;line-height:1.55;color:#5E6168">Studio product shots and black and white street frames.</p></div>
+<div style="display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:700"><span>Great for: apparel, catalogues</span><span class="go">↗</span></div>
+</a>
+<a href="#contact" class="card rv" style="flex:1 1 340px;min-width:0;box-sizing:border-box;background:#F3F3F1;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:14px;min-height:260px;justify-content:space-between">
+<div style="display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-weight:800;font-size:26px;letter-spacing:-0.025em">Something else?</h3><p class="sub" style="margin:0;font-size:15px;line-height:1.55;color:#5E6168">Describe the idea and we'll find the right mix of disciplines.</p></div>
+<div style="display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:700"><span>Start a conversation</span><span class="go">↗</span></div>
+</a>
+</div>
+</div>
+
+<!-- FEATURED WORK -->
+<div id="work" style="background:#F3F3F1;padding:120px clamp(16px,4vw,48px);display:flex;flex-direction:column;gap:56px">
+<div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between">
+<h2 style="margin:0;font-weight:800;font-size:clamp(32px,4.4vw,64px);line-height:1.02;letter-spacing:-0.04em">Selected work</h2>
+<span style="font-size:15px;color:#5E6168">3D · Motion · Concept</span>
+</div>
+
+<figure class="tile rv" style="margin:0;display:flex;flex-direction:column;gap:20px">
+<div style="overflow:hidden;border-radius:28px;aspect-ratio:2000/857;background:#0A0B0D"><img src="assets/circle-concept.webp" alt="The Circle concept board with annotations on a 360 rotation system and hard rock material" style="width:100%;height:100%;object-fit:cover"></div>
+<figcaption class="cap" style="display:flex;flex-wrap:wrap;gap:16px 48px;justify-content:space-between;align-items:flex-start">
+<div style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:6px"><span style="font-size:13px;font-weight:700;color:#5E6168">Featured · Science fiction motion concept</span><h3 style="margin:0;font-weight:800;font-size:clamp(26px,3vw,40px);letter-spacing:-0.03em">The Circle <span class="go">↗</span></h3></div>
+<p style="flex:1 1 360px;min-width:0;max-width:560px;margin:0;font-size:16px;line-height:1.65;color:#3A3D44">Inspired by a lunar eclipse, when the moon reads as an imperfect circle. The idea becomes a rough circular plate with solid stone elements that stand in for the lunar plains.</p>
+</figcaption>
+</figure>
+
+<div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start">
+<figure class="tile rv" style="margin:0;flex:3 1 560px;min-width:0;display:flex;flex-direction:column;gap:16px">
+<div style="overflow:hidden;border-radius:28px;aspect-ratio:1440/1024;background:#000"><img src="assets/iqos-board.webp" alt="Storyboard of still frames for an Iqos brand moment in teal on black" style="width:100%;height:100%;object-fit:cover"></div>
+<figcaption class="cap" style="display:flex;flex-direction:column;gap:6px"><h3 style="margin:0;font-weight:800;font-size:22px;letter-spacing:-0.02em">Iqos brand moment <span class="go">↗</span></h3><span style="font-size:14px;line-height:1.55;color:#5E6168">Still frames designed with Figma and Blender 3D, produced with Convert's visual asset team.</span></figcaption>
+</figure>
+<div class="drift" style="flex:2 1 340px;min-width:0;display:flex;flex-direction:column;gap:24px">
+<figure class="tile" style="margin:0;display:flex;flex-direction:column;gap:14px">
+<div style="overflow:hidden;border-radius:28px;aspect-ratio:16/9"><img src="assets/ufa-jar.webp" alt="Skincare jar with a lilac lid surrounded by glass spheres on pale aqua" style="width:100%;height:100%;object-fit:cover"></div>
+<figcaption class="cap" style="display:flex;flex-direction:column;gap:4px"><h3 style="margin:0;font-weight:800;font-size:20px;letter-spacing:-0.02em">Glass &amp; jar <span class="go">↗</span></h3><span style="font-size:14px;color:#5E6168">Product render, still from a 3D motion piece</span></figcaption>
+</figure>
+<figure class="tile" style="margin:0;display:flex;flex-direction:column;gap:14px">
+<div style="overflow:hidden;border-radius:28px;aspect-ratio:16/9;background:#000"><img src="assets/vase.webp" alt="Clay vase with a small red moth on its rim, rendered on black" style="width:100%;height:100%;object-fit:cover"></div>
+<figcaption class="cap" style="display:flex;flex-direction:column;gap:4px"><h3 style="margin:0;font-weight:800;font-size:20px;letter-spacing:-0.02em">Vase &amp; moth <span class="go">↗</span></h3><span style="font-size:14px;color:#5E6168">Material and lighting study</span></figcaption>
+</figure>
+</div>
+</div>
+
+<figure class="tile rv" style="margin:0;display:flex;flex-direction:column;gap:16px">
+<div style="overflow:hidden;border-radius:28px;aspect-ratio:16/9"><img src="assets/crash-scene.webp" alt="A burning crashed saucer in a misty forest with a glowing scooter in the corner" style="width:100%;height:100%;object-fit:cover"></div>
+<figcaption class="cap" style="display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:space-between"><h3 style="margin:0;font-weight:800;font-size:22px;letter-spacing:-0.02em">Crash site <span class="go">↗</span></h3><span style="font-size:14px;color:#5E6168">Environment render, fog, fire and foliage</span></figcaption>
+</figure>
+
+<div style="display:flex;flex-wrap:wrap;gap:24px">
+<figure class="tile rv" style="margin:0;flex:1 1 400px;min-width:0;display:flex;flex-direction:column;gap:14px">
+<div style="overflow:hidden;border-radius:28px;aspect-ratio:16/9;background:#C9C9C9"><img src="assets/tables.webp" alt="Two black side tables, one angular and one with looping tube legs and chains" style="width:100%;height:100%;object-fit:cover"></div>
+<figcaption class="cap" style="display:flex;flex-direction:column;gap:4px"><h3 style="margin:0;font-weight:800;font-size:20px;letter-spacing:-0.02em">Table studies <span class="go">↗</span></h3><span style="font-size:14px;color:#5E6168">Furniture concepts in 3D</span></figcaption>
+</figure>
+<figure class="tile rv" style="margin:0;flex:1 1 400px;min-width:0;display:flex;flex-direction:column;gap:14px">
+<div style="overflow:hidden;border-radius:28px;aspect-ratio:16/9;background:#141414"><img src="assets/creature.webp" alt="White sculpted creature bust with long horns on a dark background" style="width:100%;height:100%;object-fit:cover"></div>
+<figcaption class="cap" style="display:flex;flex-direction:column;gap:4px"><h3 style="margin:0;font-weight:800;font-size:20px;letter-spacing:-0.02em">Creature study <span class="go">↗</span></h3><span style="font-size:14px;color:#5E6168">Sculpt and lighting exploration</span></figcaption>
+</figure>
+</div>
+</div>
+
+<!-- IDENTITY -->
+<div id="identity" style="padding:120px clamp(16px,4vw,48px);display:flex;flex-direction:column;gap:56px">
+<div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between">
+<h2 style="margin:0;font-weight:800;font-size:clamp(32px,4.4vw,64px);line-height:1.02;letter-spacing:-0.04em">Brand &amp; identity</h2>
+<span style="font-size:15px;color:#5E6168">Logos · Guidelines · Logo motion</span>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:24px;align-items:stretch">
+<figure class="tile rv" style="margin:0;flex:2 1 520px;min-width:0;display:flex;flex-direction:column;gap:14px">
+<div style="overflow:hidden;border-radius:28px;aspect-ratio:16/9;background:#F3F3F1"><img src="assets/rvma.webp" alt="RVMA brand guideline cover with the logo between two line-drawn mandalas" style="width:100%;height:100%;object-fit:cover"></div>
+<figcaption class="cap" style="display:flex;flex-direction:column;gap:4px"><h3 style="margin:0;font-weight:800;font-size:22px;letter-spacing:-0.02em">RVMA apparel brand guideline <span class="go">↗</span></h3><span style="font-size:14px;color:#5E6168">Logo, mandala pattern system and usage rules, 2025</span></figcaption>
+</figure>
+<figure class="tile rv" style="margin:0;flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:14px">
+<div style="overflow:hidden;border-radius:28px;aspect-ratio:1/1;background:#13251B"><img src="assets/kode.webp" alt="KODE Landscape logo over wet green leaves" style="width:100%;height:100%;object-fit:cover"></div>
+<figcaption class="cap" style="display:flex;flex-direction:column;gap:4px"><h3 style="margin:0;font-weight:800;font-size:22px;letter-spacing:-0.02em">KODE Landscape <span class="go">↗</span></h3><span style="font-size:14px;color:#5E6168">Logo design</span></figcaption>
+</figure>
+</div>
+<figure class="rv" style="margin:0;display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;background:#0A0B0D;color:#fff;border-radius:28px;padding:clamp(16px,3vw,40px)">
+<div style="flex:3 1 480px;min-width:0;overflow:hidden;border-radius:18px;aspect-ratio:16/9;background:#000"><video src="assets/rma-motion.mp4" autoplay muted loop playsinline aria-label="RMA logo motion, looping animation" style="width:100%;height:100%;object-fit:cover"></video></div>
+<figcaption style="flex:1 1 240px;min-width:0;display:flex;flex-direction:column;gap:10px"><span style="font-size:13px;font-weight:700;color:#9BA0A9">Animation · Loop</span><h3 style="margin:0;font-weight:800;font-size:clamp(24px,2.6vw,36px);letter-spacing:-0.03em">RMA logo motion</h3><p style="margin:0;font-size:15px;line-height:1.6;color:#C4C7CE">A logo brought to life as a short looping animation.</p></figcaption>
+</figure>
+</div>
+
+<!-- GRAPHIC -->
+<div id="graphic" style="background:#F3F3F1;padding:120px clamp(16px,4vw,48px);display:flex;flex-direction:column;gap:56px">
+<div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between">
+<h2 style="margin:0;font-weight:800;font-size:clamp(32px,4.4vw,64px);line-height:1.02;letter-spacing:-0.04em">Graphic design</h2>
+<span style="font-size:15px;color:#5E6168">Instagram stories · Apparel</span>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;justify-content:center">
+<figure class="tile rv" style="margin:0;flex:1 1 240px;max-width:420px;min-width:0;display:flex;flex-direction:column;gap:14px">
+<div style="overflow:hidden;border-radius:28px;aspect-ratio:9/16"><img src="assets/ig-bali.webp" alt="Instagram story poster, Now Showing, Bali Heritage Creative Festival with a gullwing classic car" style="width:100%;height:100%;object-fit:cover"></div>
+<figcaption class="cap" style="display:flex;flex-direction:column;gap:4px"><h3 style="margin:0;font-weight:800;font-size:18px;letter-spacing:-0.02em">Bali Heritage Creative Festival</h3><span style="font-size:14px;color:#5E6168">Instagram story</span></figcaption>
+</figure>
+<figure class="tile rv drift" style="margin:0;flex:1 1 240px;max-width:420px;min-width:0;display:flex;flex-direction:column;gap:14px">
+<div style="overflow:hidden;border-radius:28px;aspect-ratio:9/16"><img src="assets/ig-tuksedo.webp" alt="Instagram story poster for Tuksedo Studio at KSTI 2026 with a red sports car in the desert" style="width:100%;height:100%;object-fit:cover"></div>
+<figcaption class="cap" style="display:flex;flex-direction:column;gap:4px"><h3 style="margin:0;font-weight:800;font-size:18px;letter-spacing:-0.02em">Tuksedo Studio at KSTI 2026</h3><span style="font-size:14px;color:#5E6168">Instagram story</span></figcaption>
+</figure>
+<figure class="tile rv" style="margin:0;flex:2 1 420px;min-width:0;display:flex;flex-direction:column;gap:14px">
+<div style="overflow:hidden;border-radius:28px;aspect-ratio:1224/864"><img src="assets/jersey.webp" alt="Black and gold football kit mockup, front and back, for Adikari Studio" style="width:100%;height:100%;object-fit:cover"></div>
+<figcaption class="cap" style="display:flex;flex-direction:column;gap:4px"><h3 style="margin:0;font-weight:800;font-size:18px;letter-spacing:-0.02em">Adikari Studio kit</h3><span style="font-size:14px;color:#5E6168">Apparel mockup, black and gold</span></figcaption>
+</figure>
+</div>
+</div>
+
+<!-- PHOTO -->
+<div id="photo" style="padding:120px clamp(16px,4vw,48px);display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between">
+<h2 style="margin:0;font-weight:800;font-size:clamp(32px,4.4vw,64px);line-height:1.02;letter-spacing:-0.04em">Photography</h2>
+<span style="font-size:15px;color:#5E6168">Product · Studio · Street</span>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start">
+<figure class="tile rv" style="margin:0;flex:1 1 220px;min-width:0;display:flex;flex-direction:column;gap:12px">
+<div style="overflow:hidden;border-radius:28px;aspect-ratio:2/3"><img src="assets/luxe-shirt.webp" alt="Studio portrait wearing a black uniform shirt with gold piping and LUXE embroidery" style="width:100%;height:100%;object-fit:cover"></div>
+<figcaption class="cap" style="font-size:14px;color:#5E6168">Product photo · Uniform shirt</figcaption>
+</figure>
+<figure class="tile rv" style="margin:0;flex:1 1 220px;min-width:0;display:flex;flex-direction:column;gap:12px">
+<div style="overflow:hidden;border-radius:28px;aspect-ratio:2/3"><img src="assets/tee-blue.webp" alt="Studio portrait wearing a sky blue oversized t-shirt" style="width:100%;height:100%;object-fit:cover"></div>
+<figcaption class="cap" style="font-size:14px;color:#5E6168">Product photo · Oversized tee</figcaption>
+</figure>
+<figure class="tile rv" style="margin:0;flex:2 1 460px;min-width:0;display:flex;flex-direction:column;gap:12px">
+<div style="overflow:hidden;border-radius:28px;aspect-ratio:3/2"><img src="assets/photo-house.webp" alt="Black and white photo of an old wooden house behind a bamboo fence and barbed wire" style="width:100%;height:100%;object-fit:cover"></div>
+<figcaption class="cap" style="font-size:14px;color:#5E6168">Street · Black and white</figcaption>
+</figure>
+</div>
+</div>
+
+<!-- PROCESS -->
+<div id="process" style="background:#F3F3F1;padding:120px clamp(16px,4vw,48px);display:flex;flex-wrap:wrap;gap:56px 96px">
+<div style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:16px">
+<h2 style="margin:0;font-weight:800;font-size:clamp(32px,4.4vw,64px);line-height:1.02;letter-spacing:-0.04em">How a project goes</h2>
+<p style="margin:0;font-size:18px;line-height:1.55;color:#5E6168;max-width:420px">A simple path from first idea to final files.</p>
+</div>
+<div style="flex:2 1 480px;min-width:0;display:flex;flex-direction:column;gap:0">
+<div class="rv" style="display:flex;gap:28px;padding:28px 0;border-top:1px solid #C9CBD0"><span style="font-weight:800;font-size:40px;letter-spacing:-0.04em;min-width:60px">1</span><div style="display:flex;flex-direction:column;gap:6px;min-width:0"><h3 style="margin:0;font-weight:800;font-size:22px;letter-spacing:-0.02em">Brief</h3><p style="margin:0;font-size:16px;line-height:1.6;color:#5E6168">We talk through the goal, the audience and the feel you want.</p></div></div>
+<div class="rv" style="display:flex;gap:28px;padding:28px 0;border-top:1px solid #C9CBD0"><span style="font-weight:800;font-size:40px;letter-spacing:-0.04em;min-width:60px">2</span><div style="display:flex;flex-direction:column;gap:6px;min-width:0"><h3 style="margin:0;font-weight:800;font-size:22px;letter-spacing:-0.02em">Concept</h3><p style="margin:0;font-size:16px;line-height:1.6;color:#5E6168">Sketches, references and a colour direction before anything is built.</p></div></div>
+<div class="rv" style="display:flex;gap:28px;padding:28px 0;border-top:1px solid #C9CBD0"><span style="font-weight:800;font-size:40px;letter-spacing:-0.04em;min-width:60px">3</span><div style="display:flex;flex-direction:column;gap:6px;min-width:0"><h3 style="margin:0;font-weight:800;font-size:22px;letter-spacing:-0.02em">Build</h3><p style="margin:0;font-size:16px;line-height:1.6;color:#5E6168">Modelling, illustration or layout, with check-ins along the way.</p></div></div>
+<div class="rv" style="display:flex;gap:28px;padding:28px 0;border-top:1px solid #C9CBD0"><span style="font-weight:800;font-size:40px;letter-spacing:-0.04em;min-width:60px">4</span><div style="display:flex;flex-direction:column;gap:6px;min-width:0"><h3 style="margin:0;font-weight:800;font-size:22px;letter-spacing:-0.02em">Motion &amp; polish</h3><p style="margin:0;font-size:16px;line-height:1.6;color:#5E6168">Animation, lighting and fine detail until it feels finished.</p></div></div>
+<div class="rv" style="display:flex;gap:28px;padding:28px 0;border-top:1px solid #C9CBD0;border-bottom:1px solid #C9CBD0"><span style="font-weight:800;font-size:40px;letter-spacing:-0.04em;min-width:60px">5</span><div style="display:flex;flex-direction:column;gap:6px;min-width:0"><h3 style="margin:0;font-weight:800;font-size:22px;letter-spacing:-0.02em">Deliver</h3><p style="margin:0;font-size:16px;line-height:1.6;color:#5E6168">Final files in the formats you need, ready to publish.</p></div></div>
+</div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" style="padding:120px clamp(16px,4vw,48px);display:flex;flex-wrap:wrap;gap:48px 96px">
+<h2 style="flex:1 1 320px;min-width:0;margin:0;font-weight:800;font-size:clamp(32px,4.4vw,64px);line-height:1.02;letter-spacing:-0.04em">About Nam</h2>
+<div style="flex:2 1 460px;min-width:0;max-width:720px;display:flex;flex-direction:column;gap:28px">
+<p style="margin:0;font-size:clamp(18px,1.6vw,22px);line-height:1.6">I'm Muhammad Ishlahul Anam, Nam for short, a freelance creative designer based in Indonesia with about two years of experience. My work moves between 3D motion, graphic design, illustration, animation and fine and concept art. It's built on distinctive art styles, unusual colourways and experimental ways of communicating visually.</p>
+<div style="display:flex;flex-wrap:wrap;gap:10px;font-size:14px;font-weight:700">
+<span style="background:#F3F3F1;padding:10px 18px;border-radius:999px">3D motion</span>
+<span style="background:#F3F3F1;padding:10px 18px;border-radius:999px">Graphic design</span>
+<span style="background:#F3F3F1;padding:10px 18px;border-radius:999px">Illustration</span>
+<span style="background:#F3F3F1;padding:10px 18px;border-radius:999px">Animation</span>
+<span style="background:#F3F3F1;padding:10px 18px;border-radius:999px">Concept art</span>
+</div>
+</div>
+</div>
+
+<!-- CLOSING CTA -->
+<div id="contact" style="position:relative;min-height:640px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#0A0B0D">
+<img class="kb" src="assets/circle-detail.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+<div style="position:absolute;inset:0;background:rgba(10,11,13,0.5)"></div>
+<div style="position:relative;box-sizing:border-box;width:100%;padding:100px clamp(16px,4vw,48px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:32px;color:#fff">
+<h2 class="rv" style="margin:0;max-width:960px;font-weight:800;font-size:clamp(36px,7vw,104px);line-height:1;letter-spacing:-0.045em;text-wrap:balance">Got a project? Let's make something strange.</h2>
+<div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center">
+<span class="pill light">Email: anamtravler@gmail.com</span>
+<span class="pill ghost">Instagram: @anmvisl</span>
+</div>
+<div style="font-size:14px;color:#C4C7CE">Behance: behance.net/gallery/250624315/Graphic-and-Motion</div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<div style="background:#0B0B0C;color:#fff;padding:72px clamp(16px,4vw,48px) 40px;display:flex;flex-direction:column;gap:56px">
+<div style="display:flex;flex-wrap:wrap;gap:40px 96px;justify-content:space-between">
+<div style="flex:1 1 240px;min-width:0;display:flex;flex-direction:column;gap:12px"><span style="font-weight:800;font-size:28px;letter-spacing:-0.03em">NAM<span style="color:#2FD0BE">.</span></span><span style="font-size:14px;line-height:1.6;color:#9BA0A9;max-width:300px">Freelance creative designer in Indonesia.</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:40px 72px;font-size:14px">
+<div style="display:flex;flex-direction:column;gap:12px"><span style="font-weight:700;color:#9BA0A9">Work</span><a href="#work">Selected work</a><a href="#identity">Brand &amp; identity</a><a href="#graphic">Graphic design</a><a href="#photo">Photography</a></div>
+<div style="display:flex;flex-direction:column;gap:12px"><span style="font-weight:700;color:#9BA0A9">Studio</span><a href="#services">Services</a><a href="#process">Process</a><a href="#about">About</a></div>
+<div style="display:flex;flex-direction:column;gap:12px"><span style="font-weight:700;color:#9BA0A9">Contact</span><span>anamtravler@gmail.com</span><span>@anmvisl</span><span>behance.net/gallery/250624315/Graphic-and-Motion</span></div>
+</div>
+</div>
+<div style="border-top:1px solid #2A2D33;padding-top:20px;font-size:13px;color:#9BA0A9;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px"><span>© 2026 Muhammad Ishlahul Anam</span><span>Indonesia</span></div>
+</div>
+
+</div>
+
+
+</body>
+</html>
